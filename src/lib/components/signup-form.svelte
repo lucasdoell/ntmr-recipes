@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { goto } from '$app/navigation';
 	import { authClient } from '$lib/auth-client';
 	import { Button } from '$lib/components/ui/button/index.js';
 	import * as Card from '$lib/components/ui/card/index.js';
@@ -35,6 +36,7 @@
 				},
 				onSuccess: (ctx) => {
 					loading = false;
+					goto('/');
 				},
 				onError: (ctx) => {
 					alert(ctx.error.message);
@@ -71,7 +73,7 @@
 			</div>
 			<div class="mt-4 text-center text-sm">
 				Already have an account?
-				<a href="/sign-up" class="underline"> Log in </a>
+				<a href="/login" class="underline"> Log in </a>
 			</div>
 		</form>
 	</Card.Content>
