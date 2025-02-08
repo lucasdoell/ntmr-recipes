@@ -1,11 +1,14 @@
 <script lang="ts">
 	import { goto } from '$app/navigation';
+	import { authClient } from '$lib/auth-client';
 	import ModeToggle from '$lib/components/mode-toggle.svelte';
 	import { Button } from '$lib/components/ui/button';
 
 	function handleLogin() {
 		goto('/login');
 	}
+
+	const session = authClient.useSession();
 </script>
 
 <header class="">
@@ -14,7 +17,11 @@
 
 		<nav aria-label="Main Navigation" class="flex items-center gap-2">
 			<ModeToggle />
-			<Button onclick={handleLogin} variant="outline" aria-label="Login">Login</Button>
+			{#if $session.data?.user}
+				<p>Hello, {$session.data.user.name}</p>
+			{:else}
+				<Button onclick={handleLogin} variant="outline" aria-label="Login">Login</Button>
+			{/if}
 		</nav>
 	</div>
 </header>
