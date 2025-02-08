@@ -1,8 +1,12 @@
 <script lang="ts">
-	import { ModeWatcher } from "mode-watcher";
+	import Header from '$lib/components/header.svelte';
+	import { ModeWatcher } from 'mode-watcher';
 	import '../app.css';
 	let { children } = $props();
 </script>
 
+<Header />
 <ModeWatcher />
-{@render children()}
+<div class="container mx-auto px-4 py-4">
+	{@render children()}
+</div>

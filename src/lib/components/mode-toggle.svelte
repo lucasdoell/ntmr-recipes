@@ -3,16 +3,6 @@
 	import * as DropdownMenu from '$lib/components/ui/dropdown-menu';
 	import { Moon, Sun } from 'lucide-svelte';
 	import { resetMode, setMode } from 'mode-watcher';
-
-	type Theme = 'light' | 'dark' | 'system';
-
-	function handleThemeChange(theme: Theme): void {
-		if (theme === 'system') {
-			resetMode();
-		} else {
-			setMode(theme);
-		}
-	}
 </script>
 
 <DropdownMenu.Root>
