@@ -9,10 +9,8 @@
 
 	async function handleSubmit(event: SubmitEvent) {
 		event.preventDefault();
-		// Cast the event target to HTMLFormElement
 		const form = event.target as HTMLFormElement;
 
-		// Access form elements with proper typing
 		const email = form.elements.namedItem('email') as HTMLInputElement;
 		const password = form.elements.namedItem('password') as HTMLInputElement;
 		const name = form.elements.namedItem('name') as HTMLInputElement;
@@ -28,7 +26,7 @@
 				email: formData.email,
 				password: formData.password,
 				name: formData.name,
-				image: undefined, // TODO
+				image: '',
 				callbackURL: '/'
 			},
 			{
@@ -40,6 +38,7 @@
 				},
 				onError: (ctx) => {
 					alert(ctx.error.message);
+					loading = false;
 				}
 			}
 		);
