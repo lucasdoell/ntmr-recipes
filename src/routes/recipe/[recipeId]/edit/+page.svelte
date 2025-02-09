@@ -12,7 +12,7 @@
 	const form = superForm(data.form, {
 		validators: zodClient(editRecipeFormSchema),
 		onUpdated: ({ form: f }) => {
-			if (f.valid) {
+			if (f.valid && !f.errors._errors) {
 				toast.success('Recipe updated!');
 			} else {
 				toast.error('Please fix the errors in the form.');
@@ -43,9 +43,9 @@
 				<Textarea {...props} bind:value={$formData.description} />
 			{/snippet}
 		</Form.Control>
-		<Form.Description
-			>A description of your recipe. This should include the ingredients and steps.</Form.Description
-		>
+		<Form.Description>
+			A description of your recipe. This should include the ingredients and steps.
+		</Form.Description>
 		<Form.FieldErrors />
 	</Form.Field>
 	<Form.Button>Submit</Form.Button>
