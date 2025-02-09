@@ -1,38 +1,44 @@
-# sv
+# NTMR Recipes
 
-Everything you need to build a Svelte project, powered by [`sv`](https://github.com/sveltejs/cli).
+## Setup Instructions
 
-## Creating a project
+1. Clone the repo
+2. Install dependencies
+3. Run the app
 
-If you're seeing this, you've probably already done this step. Congrats!
-
-```bash
-# create a new project in the current directory
-npx sv create
-
-# create a new project in my-app
-npx sv create my-app
-```
-
-## Developing
-
-Once you've created a project and installed dependencies with `npm install` (or `pnpm install` or `yarn`), start a development server:
+### Clone the repo
 
 ```bash
-npm run dev
-
-# or start the server and open the app in a new browser tab
-npm run dev -- --open
+git clone https://github.com/lucasdoell/ntmr-recipes.git
 ```
 
-## Building
-
-To create a production version of your app:
+### Install dependencies
 
 ```bash
-npm run build
+pnpm install
 ```
 
-You can preview the production build with `npm run preview`.
+### Run the app
 
-> To deploy your app, you may need to install an [adapter](https://svelte.dev/docs/kit/adapters) for your target environment.
+```bash
+pnpm dev
+```
+
+## Time Spent
+
+I spent about 6 hours on this project. Most of the time spent was getting Drizzle to cooperate with Better Auth. Once I switched to Prisma instead, I was able to get the app up and running pretty quickly.
+
+## Future Improvements
+
+- Markdown rendering for recipe descriptions
+- Deleting recipes
+- Image uploads
+- Better search implementation
+- The edit endpoint is protected by authentication, but may not be the most secure implementation. For a proof of concept, I didn't spend much time on testing the security. One such improvement would be to test the security more thoroughly.
+- The edit recipe form has a bug where it doesn't properly show the error toast when the form is submitted by a user who is not the owner of the recipe. This should be fixed.
+
+## Assumptions Made
+
+- Instead of using a traditional REST API, I implemented recipe creation and retrieval using SvelteKit's `load` functions. This is idiomatic SvelteKit and allows me to use the `load` function to fetch data from the database.
+- A basic REST API could be implemented using `+server.ts` files. This would be trivial to implement, but I didn't want to spend time on it.
+- Search was asked to be implemented for title only, but I included description as well as this would be a common requirement.
