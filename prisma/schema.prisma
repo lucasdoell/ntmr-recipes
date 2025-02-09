@@ -17,6 +17,7 @@ model User {
   updatedAt     DateTime
   sessions      Session[]
   accounts      Account[]
+  Recipe        Recipe[]
 
   @@unique([email])
   @@map("user")
@@ -65,4 +66,16 @@ model Verification {
   updatedAt  DateTime?
 
   @@map("verification")
+}
+
+model Recipe {
+  id          String   @id
+  userId      String
+  user        User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  name        String
+  description String
+  createdAt   DateTime
+  updatedAt   DateTime
+
+  @@map("recipe")
 }
