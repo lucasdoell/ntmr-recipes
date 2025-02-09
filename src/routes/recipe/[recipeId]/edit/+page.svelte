@@ -25,6 +25,9 @@
 	const { form: formData, enhance } = form;
 </script>
 
+<svelte:head>
+	<title>Edit Recipe | NTMR Recipes</title>
+</svelte:head>
 <form method="POST" use:enhance>
 	<Form.Field {form} name="name">
 		<Form.Control>

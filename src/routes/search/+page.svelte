@@ -5,6 +5,10 @@
 	let { data } = $props();
 </script>
 
+<svelte:head>
+	<title>Search Results | NTMR Recipes</title>
+</svelte:head>
+
 <h1 class="text-2xl font-bold">Search Results</h1>
 
 <p>Found {data.recipes.length} recipes</p>

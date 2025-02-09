@@ -9,6 +9,9 @@
 	let canEdit = session.value?.data?.user.id === data.recipe!.user.id;
 </script>
 
+<svelte:head>
+	<title>{data.recipe!.name} | NTMR Recipes</title>
+</svelte:head>
 <h1 class="mt-8 scroll-m-20 text-2xl font-semibold tracking-tight">{data.recipe!.name}</h1>
 <p class="text-muted-foreground text-sm">
 	Created {new Date(data.recipe!.createdAt!).toLocaleDateString()} by {data.recipe!.user.name}

@@ -20,6 +20,10 @@
 	}
 </script>
 
+<svelte:head>
+	<title>NTMR Recipes - A recipe sharing board</title>
+</svelte:head>
+
 <h1 class="mb-8 text-xl font-bold">Welcome to NTMR Recipes</h1>
 
 <form onsubmit={handleSearch}>
