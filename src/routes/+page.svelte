@@ -1,14 +1,32 @@
 <script lang="ts">
+	import { goto } from '$app/navigation';
 	import { Card, CardContent, CardHeader } from '$lib/components/ui/card';
 	import CardFooter from '$lib/components/ui/card/card-footer.svelte';
+	import { Input } from '$lib/components/ui/input';
 
 	let { data } = $props();
-	console.log(data.recipes);
+
+	function handleSearch(event: Event) {
+		event.preventDefault();
+		const form = event.target as HTMLFormElement;
+
+		const search = form.elements.namedItem('search') as HTMLInputElement;
+
+		if (!search.value) {
+			return;
+		}
+
+		goto(`/search?q=${search.value}`);
+	}
 </script>
 
-<h1 class="text-xl font-bold">Welcome to NTMR Recipes</h1>
+<h1 class="mb-8 text-xl font-bold">Welcome to NTMR Recipes</h1>
 
-<ul class="mt-16 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
+<form onsubmit={handleSearch}>
+	<Input id="search" type="text" placeholder="Search for a recipe..." />
+</form>
+
+<ul class="mt-8 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
 	{#each data.recipes as recipe}
 		<li>
 			<Card>
